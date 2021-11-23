@@ -22,6 +22,12 @@ module.exports = {
         },
 
         atualizarAluno: (_, { id, nome, curso, semestre, ra, cpf, cidade }) => {
+            if (id < 0 || id > alunos.length)
+                throw new "ID inválido";
+
+            if (alunos[id].cpf == null)
+                throw new "Usuário não existe";
+
             alunos[id] = {
                 "id": id,
                 "nome": nome, 
@@ -36,6 +42,12 @@ module.exports = {
         },
 
         apagarAluno: (_, { id }) => {
+            if (id < 0 || id > alunos.length)
+                throw new "ID inválido";
+
+            if (alunos[id].cpf == null)
+                throw new "Usuário não existe";
+            
             alunos.splice(id, 1);
 
             return alunos;
