@@ -1,0 +1,23 @@
+type Aluno {
+    id: ID!
+    nome: String!
+    curso: String
+    semestre: String
+    ra: String
+    cpf: String!
+    cidade: String
+}
+
+type Query {
+    #Retorna uma array de alunos
+    alunos: [Aluno!]! 
+
+    #Retorna um Aluno por ID
+    aluno(id: ID!): Aluno
+}
+
+type Mutation {
+    criarAluno(nome: String!, curso: String, semestre: String, ra: String, cpf: String!, cidade: String): Aluno
+    atualizarAluno(id: ID!, nome: String!, curso: String, semestre: String, ra: String, cpf: String!, cidade: String): Aluno
+    apagarAluno(id: ID!): [Aluno]
+}
